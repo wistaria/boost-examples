@@ -11,4 +11,5 @@ if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
 endif(Boost_FOUND)
 
+add_subdirectory(exp_sinh)
 add_subdirectory(tanh_sinh)
