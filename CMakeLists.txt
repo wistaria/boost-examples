@@ -1,15 +1,16 @@
-cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
-project(boost-examples NONE)
-
-include(${PROJECT_SOURCE_DIR}/config/core.cmake)
+cmake_minimum_required(VERSION 3.18)
+include(cmake/prefix.cmake)
+project(boost-examples CXX)
+include(cmake/postfix.cmake)
 
 include_directories(${PROJECT_SOURCE_DIR})
 
-# Boost
-find_package(Boost REQUIRED)
+find_package(Boost COMPONENTS date_time program_options REQUIRED NO_MODULE)
 if(Boost_FOUND)
-  include_directories(${Boost_INCLUDE_DIRS})
+  message(STATUS "Found Boost: ${Boost_VERSION_STRING}")
 endif(Boost_FOUND)
 
+add_subdirectory(date_time)
 add_subdirectory(exp_sinh)
+add_subdirectory(program_options)
 add_subdirectory(tanh_sinh)
